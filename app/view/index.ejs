@@ -1,16 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('layout/pageheader') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 
 <body>
-    <% if (user) { %>
-    <h2><%= user.name %></h2>
-    <% } %>
+    <%- include('layout/site-header')%>
+
+    <main>
+        <div class="layui-row">
+            <div class="layui-col-md8 layui-col-md-offset2">
+                <div class="tag-box">
+                    <% tags.forEach(function(tag){%>
+                    <a href="/?tab=<%=tag.tab%>" class="tag <%= activeTab == tag.tab ? 'active':''%>">
+                        <span><%=tag.title%></span>
+                    </a>
+                    <%})%>
+                </div>
+                <div>
+                    <% list.forEach(function(item){ %>
+                    <div class="list-item bg-white list-border">
+                        <img class="list-item-avatar" src="<%=item.author.avatar_url%>"
+                            alt="<%=item.author.loginname%>">
+
+                        <div class="list-item_count inline_block mr-lf-8">
+                            <span class="reply"><%=item.reply_count%></span>/<%=item.reply_count%>
+                        </div>
+
+                        <% if (item.good) { %>
+                        <div class="badge bg-e43f5a mr-lf-8">精华</div>
+                        <% } %>
+                        <% if (item.top) { %>
+                        <div class="badge bg-7ebdb4 mr-lf-8">置顶</div>
+                        <% } %>
+
+                        <div class="inline_block mr-lf-8">
+                            <a class="title-href" href="/topic/<%=item.id%>" alt="<%=item.title%>">
+                                <span><%=item.title%></span>
+                            </a>
+                        </div>
+
+
+
+                        <div class="inline_block f-right text-ccc"><%= helper.formatDate(item.last_reply_at)%></div>
+                    </div>
+                    <% }); %>
+                </div>
+
+                <div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link disabled" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>

@@ -2,22 +2,12 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
-import ExportArticle from '../../../app/service/Article';
-import ExportAuthentication from '../../../app/service/Authentication';
-import ExportBanner from '../../../app/service/Banner';
-import ExportCustomer from '../../../app/service/Customer';
-import ExportUser from '../../../app/service/User';
-import ExportVideo from '../../../app/service/Video';
-import ExportWechatService from '../../../app/service/WechatService';
+import ExportBase from '../../../app/service/Base';
+import ExportHome from '../../../app/service/Home';
 
 declare module 'egg' {
   interface IService {
-    article: ExportArticle;
-    authentication: ExportAuthentication;
-    banner: ExportBanner;
-    customer: ExportCustomer;
-    user: ExportUser;
-    video: ExportVideo;
-    wechatService: ExportWechatService;
+    base: ExportBase;
+    home: ExportHome;
   }
 }

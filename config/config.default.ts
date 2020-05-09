@@ -3,24 +3,6 @@ import * as path from 'path';
 
 export default (appInfo: EggAppInfo) => {
   const config = {
-    mysql: {
-      client: {
-        // host
-        host: '0.0.0.0',
-        // 端口号
-        port: '3312',
-        // 用户名
-        user: 'root',
-        // 密码
-        password: '123456',
-        // 数据库名
-        database: 'vue',
-      },
-      // 是否加载到 app 上，默认开启
-      app: true,
-      // 是否加载到 agent 上，默认关闭
-      agent: false
-    },
     security: {
       csrf: {
         enable: false,
@@ -33,11 +15,17 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1570276279589_4278';
 
   // add your egg config in here
-  config.middleware = ['notFoundError'];
+  config.middleware = ['locals', 'notFoundError'];
 
   // add your special config in here
   const bizConfig = {
     sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`
+  };
+
+  config.locals = {
+    name: 'CNode技术社区',
+    description: 'CNode：Node.js专业中文社区',
+    site_logo: '/public/images/cnodejs_light.svg'
   };
 
   config.view = {
@@ -48,6 +36,38 @@ export default (appInfo: EggAppInfo) => {
       '.ejs': 'ejs',
     }
   };
+
+  config.redis = {
+    client: {
+      port: 6388,          // Redis port
+      host: '127.0.0.1',   // Redis host
+      password: '',
+      db: 0,
+    }
+  };
+
+  config.tags = [
+    {
+      title: '全部',
+      tab: 'all'
+    },
+    {
+      title: '精华',
+      tab: 'good'
+    },
+    {
+      title: '分享',
+      tab: 'share'
+    },
+    {
+      title: '问答',
+      tab: 'ask'
+    },
+    {
+      title: '职位',
+      tab: 'job'
+    }
+  ];
 
   // the return config will combines to EggAppConfig
   return {

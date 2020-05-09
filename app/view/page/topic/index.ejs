@@ -1,0 +1,74 @@
+<%- include('../../layout/pageheader') %>
+
+
+<body>
+    <%- include('../../layout/site-header')%>
+
+    <main>
+        <div class="layui-row">
+            <div class="layui-col-md8 layui-col-md-offset2">
+
+                <section class="content-main">
+                    <div class="title-container border-bottom">
+                        <% if(data.good) { %>
+                        <%- include('../../components/item-good') %>
+                        <%}%>
+                        <% if(data.top) { %>
+                        <%- include('../../components/item-top') %>
+                        <%}%>
+                        <h1 class="title"><%=data.title%></h1>
+                    </div>
+                    <div class="text-999">
+                        <span><%= helper.formatDate(data.create_at)%></span> -
+                        <span>
+                            <a href="">
+                                <%=data.author.loginname%>
+                            </a>
+                        </span> -
+                        <span>浏览<%=data.visit_count%>次</span>
+                    </div>
+                    <div class="mr-top-20">
+                        <%-data.content%>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="layui-row">
+            <div class="layui-col-md8 layui-col-md-offset2">
+                <div class="comment-title">
+                    <%=data.reply_count%>回复
+                </div>
+                <div>
+                    <% data.replies.forEach(function(reply){%>
+                    <div class="bg-white list-border">
+                        <div class="user-info-container">
+                            <div class="comment-user clear">
+                                <div class="avatar f-left">
+                                    <img src="<%=reply.author.avatar_url%>" alt="<%=reply.author.loginname%>">
+                                </div>
+
+                                <div class="user-info f-left">
+                                    <h4 class="user-info-username"><%=reply.author.loginname%></h4>
+                                    <span class="user-info-publish-time"><%=helper.formatDate(reply.create_at)%></span>
+                                </div>
+
+                                <div class="like-num f-right">
+                                    <i class="layui-icon">&#xe6c6;</i>
+                                    <span><%=reply.ups.length%></span>
+                                </div>
+
+                            </div>
+
+                            <div class="user-info-comment"><%-reply.content%></div>
+                        </div>
+                    </div>
+                    <%})%>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 import 'egg';
+import { EggRedisOptions } from 'egg-redis'
 
 declare module 'egg' {
   interface mysql {
@@ -21,5 +22,6 @@ declare module 'egg' {
   }
   interface Application {
     mysql: mysql;
+    redis: EggRedisOptions;
   }
 }

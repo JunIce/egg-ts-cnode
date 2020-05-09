@@ -11,6 +11,11 @@ const plugin: EggPlugin = {
   ejs: {
     enable: true,
     package: 'egg-view-ejs',
+  },
+
+  redis: {
+    enable: true,
+    package: 'egg-redis',
   }
 };
 
