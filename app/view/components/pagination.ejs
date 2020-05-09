@@ -1,0 +1,17 @@
+<nav class="display-inline">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link disabled" href="?page=1&tab=<%=activeTab%>" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link"
+                href="?page=<%=pagination.current%>&tab=<%=activeTab%>"><%=pagination.current%></a></li>
+        <li class="page-item"><a class="page-link"
+                href="?page=<%=Number(pagination.current)+1%>&tab=<%=activeTab%>"><%= Number(pagination.current)+1%></a>
+        </li>
+        <li class="page-item"><a class="page-link"
+                href="?page=<%=Number(pagination.current)+2%>&tab=<%=activeTab%>"><%=Number(pagination.current)+2%></a>
+        </li>
+    </ul>
+</nav>

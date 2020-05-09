@@ -20,6 +20,10 @@ main {
     border-bottom: 2px solid #222831;
 }
 
+.display-inline {
+    display: inline-block;
+}
+
 .f-left {
     float: left;
 }
@@ -76,6 +80,7 @@ main {
 .mr-lf-8 {
     margin-left: 8px;
 }
+
 
 
 .tag-box {
@@ -317,10 +322,10 @@ main {
     border-color: #dee2e6;
 }
 
-.page-item.disabled .page-link {
+.page-link.disabled {
     color: #6c757d;
     pointer-events: none;
-    cursor: auto;
+    cursor: not-allowed;
     background-color: #fff;
     border-color: #dee2e6;
 }

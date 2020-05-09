@@ -5,15 +5,20 @@ export default class HomeController extends Controller {
   public async index() {
     const { ctx, app } = this;
 
-    const { tab } = ctx.query;
+    const { tab, page } = ctx.query;
     // console.log('tab', tab);
     let activeTab = tab || 'all';
-    let list = await ctx.service.home.pagelist(activeTab);
+    let list = await ctx.service.home.pagelist(activeTab, page);
+
+    let pagination = {
+      current: page || 1,
+    };
 
     await ctx.render('index', {
       list: list.data,
       tags: app.config.tags,
-      activeTab
+      activeTab,
+      pagination
     });
   }
 

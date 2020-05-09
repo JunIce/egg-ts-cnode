@@ -1,33 +1,19 @@
-# hackernews-async-ts
+# 基于egg-ts版本重写cnode.org小Demo
 
-[Hacker News](https://news.ycombinator.com/) showcase using typescript && egg
+数据来源
 
-## QuickStart
+> https://cnodejs.org/api
 
-### Development
+本地安装了redis，请求数据保存在redis中，不需要请求多次
 
-```bash
-$ npm i
-$ npm run dev
-$ open http://localhost:7001/
-```
+旨在体验一下egg下的开发，ts使用还是不熟练
 
-Don't tsc compile at development mode, if you had run `tsc` then you need to `npm run clean` before `npm run dev`.
+安装使用
 
-### Deploy
+> yarn install && yarn dev
 
-```bash
-$ npm run tsc
-$ npm start
-```
+![1.png](https://i.loli.net/2020/05/09/r5qABpIjJDnO7i2.png)
 
-### Npm Scripts
+![2.png](https://i.loli.net/2020/05/09/1CAEzSrLUZtgqxD.png)
 
-- Use `npm run lint` to check code style
-- Use `npm test` to run unit test
-- se `npm run clean` to clean compiled js at development mode once
-
-### Requirement
-
-- Node.js 8.x
-- Typescript 2.8+
+![3.png](https://i.loli.net/2020/05/09/ZVrfuWEGY1zT46h.png)

@@ -11,13 +11,13 @@ export default class Home extends BaseService {
         this.redis = app.redis;
     }
 
-    public async pagelist(tab: string = 'all') {
+    public async pagelist(tab: string = 'all', page: number = 1) {
         let list: any;
-        const key = `home/list/${tab}`;
+        const key = `home/list/${tab}/${page}`;
         list = await this.redis.get(key);
 
         if (!list) {
-            list = await this.get(`/topics?tab=${tab}`);
+            list = await this.get(`/topics?tab=${tab}&page=${page}`);
             await this.redis.set(key, JSON.stringify(list));
         } else {
             list = JSON.parse(list);
